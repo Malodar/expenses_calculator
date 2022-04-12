@@ -1,7 +1,11 @@
-from django.shortcuts import render
-from django.http.response import JsonResponse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import CurrencySerializer
+from .models import Currency
 
-# Create your views here.
 
-def hello(request):
-    return JsonResponse('Hello world', safe=False)
+@api_view(['GET'])
+def getCurrencies(request):
+    currencies = Currency.objects.all()
+    serializer = CurrencySerializer(currencies, many=True)
+    return Response(serializer.data)

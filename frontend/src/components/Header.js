@@ -5,7 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 function Header() {
   return (
     <header>
-      <Navbar bg="light" expand={false}>
+      <Navbar bg="light" expand={false} collapseOnSelect>
         <Container fluid>
           <LinkContainer to='/'>
             <Navbar.Brand>Expense Calculator</Navbar.Brand>
@@ -22,7 +22,7 @@ function Header() {
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <LinkContainer to='/'>
-                  <Nav.Link>Home</Nav.Link>
+                  <Nav.Link>Account</Nav.Link>
                 </LinkContainer>
                 <LinkContainer to='/news'>
                   <Nav.Link>News</Nav.Link>
