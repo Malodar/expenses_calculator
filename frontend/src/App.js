@@ -5,6 +5,10 @@ import Footer from './components/Footer';
 
 import HomeScreen from './screens/HomeScreen';
 import ContactScreen from './screens/ContactScreen';
+import ExpensesCategoriesScreen from './screens/ExpensesCategoriesScreen'
+import IncomeCategoriesScreen from './screens/IncomeCategoriesScreen'
+import PlacesMoneySavingScreen from './screens/PlacesMoneySavingScreen'
+import BudgetPlanningScreen from './screens/BudgetPlanningScreen'
 
 
 function App() {
@@ -16,6 +20,10 @@ function App() {
           <Routes>
             <Route path='/' element={<HomeScreen />} exact/>
             <Route path='/contact' element={<ContactScreen />} />
+            <Route path='/expenses-categories' element={<ExpensesCategoriesScreen />} />
+            <Route path='/income-categories' element={<IncomeCategoriesScreen />} />
+            <Route path='/places-money-saving' element={<PlacesMoneySavingScreen />} />
+            <Route path='/budget-planning' element={<BudgetPlanningScreen />} />
           </Routes>
         </Container>
       </main>

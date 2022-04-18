@@ -4,6 +4,8 @@ import Outcome from './Outcome'
 import Income from './Income'
 import Transfer from './Transfer'
 import Exchange from './Exchange'
+import SiderMenu from '../components/SiderMenu'
+import Chart from '../components/Chart'
 import { useDispatch, useSelector } from 'react-redux'
 
 
@@ -14,6 +16,9 @@ function HomeScreen() {
   return (
     <Container>
       <Row>
+        <Col sm={3}>
+          <SiderMenu />
+        </Col>
         <Col sm={4}>
           <Tabs 
             defaultActiveKey="profile" 
@@ -34,8 +39,8 @@ function HomeScreen() {
             </Tab>
           </Tabs>
         </Col>
-        <Col sm={8}>
-          Chart
+        <Col sm={5}>
+          <Chart />
         </Col>
       </Row>
     </Container>

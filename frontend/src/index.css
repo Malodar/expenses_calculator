@@ -1,3 +1,11 @@
 main {
   min-height: 85vh;
 }
+
+.menu button{
+  color: #3399f3;
+  padding-left: 16px;
+}
+.menu a{
+  color: #3399f3;
+}

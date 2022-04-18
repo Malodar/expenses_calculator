@@ -2,21 +2,25 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { 
-    currencyListReducer, 
+  currencyListReducer,
 } from './reducers/currencyReducers'
+import { 
+  emailReducer,
+} from './reducers/emailReducers'
 
 const reducer = combineReducers({
-    currencyList: currencyListReducer,
+  currencyList: currencyListReducer,
+  email: emailReducer,
 })
 
 
 
 const initialState = {
-    // cart: {cartItems: cartItemsFromStorage}
+  // cart: {cartItems: cartItemsFromStorage}
 }
 
 const middleware = [thunk]
 const store = createStore(reducer, initialState, 
-    composeWithDevTools(applyMiddleware(...middleware)))
+  composeWithDevTools(applyMiddleware(...middleware)))
 
 export default store

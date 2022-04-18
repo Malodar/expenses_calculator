@@ -21,8 +21,6 @@ function Outcome() {
         <Form.Control type="date" placeholder="Enter date" />
       </Form.Group>
 
-      
-
       <Form.Select aria-label="Money source selector">
         <option>Open this select menu</option>
         <option value="1">One</option>
@@ -30,7 +28,7 @@ function Outcome() {
         <option value="3">Three</option>
       </Form.Select>
 
-      <Form.Group className="mb-3" controlid="formComment">
+      <Form.Group className="mb-3 mt-3" controlid="formComment">
         <Form.Control type="string" placeholder="Comment" />
       </Form.Group>
 
