@@ -39,7 +39,7 @@ function ContactScreen() {
                   </Col>
                   <Col sm={6}>
                       <Form.Group className="mb-3 mt-3" controlId="contactForm.ControlEmail">
-                        <Form.Label>Email address</Form.Label>
+                        <Form.Label>Your email address for response</Form.Label>
                         <Form.Control name='emailAddress' type="email" onChange={(e) => setEmailAddress(e.target.value)} />
                       </Form.Group>
 

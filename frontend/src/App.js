@@ -10,6 +10,8 @@ import IncomeCategoriesScreen from './screens/IncomeCategoriesScreen'
 import PlacesMoneySavingScreen from './screens/PlacesMoneySavingScreen'
 import BudgetPlanningScreen from './screens/BudgetPlanningScreen'
 import Currencies from './screens/Currencies';
+import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
 
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
         <Container>
           <Routes>
             <Route path='/' element={<HomeScreen />} exact/>
+            <Route path='/login' element={<LoginScreen />} />
+            <Route path='/register' element={<RegisterScreen />} />
             <Route path='/contact' element={<ContactScreen />} />
             <Route path='/currencies' element={<Currencies />} />
             <Route path='/expenses-categories' element={<ExpensesCategoriesScreen />} />

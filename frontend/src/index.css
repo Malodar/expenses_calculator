@@ -9,3 +9,7 @@ main {
 .menu a{
   color: #3399f3;
 }
+
+.currencies:hover {
+  background-color: rgb(140, 140, 179);
+}

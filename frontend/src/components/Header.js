@@ -1,8 +1,19 @@
 import React from 'react'
-import { Navbar, Nav, Container, Offcanvas } from 'react-bootstrap'
+import { Navbar, Nav, Container, Offcanvas, NavDropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../actions/userActions'
 
 function Header() {
+  const dispatch = useDispatch()
+
+  const userLogin = useSelector(state => state.userLogin)
+  const {userInfo} = userLogin
+
+  const logoutHandler = () => {
+    dispatch(logout())
+  }
+
   return (
     <header>
       <Navbar bg="light" expand={false} collapseOnSelect>
@@ -10,6 +21,20 @@ function Header() {
           <LinkContainer to='/'>
             <Navbar.Brand>Expense Calculator</Navbar.Brand>
           </LinkContainer>
+          {userInfo ? (
+              <NavDropdown title={userInfo.name} id='username'>
+                <LinkContainer to='/profile'>
+                  <NavDropdown.Item>Profile</NavDropdown.Item>
+                </LinkContainer>
+                <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <LinkContainer to='/login'>
+                <Nav.Link>
+                  <i className='fas fa-user'></i>Login
+                </Nav.Link>
+              </LinkContainer>
+          )}
           <Navbar.Toggle aria-controls="offcanvasNavbar" />
           <Navbar.Offcanvas
             id="offcanvasNavbar"

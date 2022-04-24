@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import SiderMenu from '../components/SiderMenu'
-import { Row, Col, Container, Card, Button, Form, ListGroup } from 'react-bootstrap'
+import { Row, Col, Container, Card, Button, Form, ListGroup, Badge } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { listCurrencies, addCurrency } from '../actions/currencyActions'
+import { listCurrencies, addCurrency, deleteCurrency } from '../actions/currencyActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 
@@ -10,7 +10,8 @@ function Currencies() {
   const dispatch = useDispatch()
   const currencyList = useSelector(state => state.currencyList)
   const {error, loading, currencies} = currencyList
-  const user = 1
+  const userLogin = useSelector(state => state.userLogin)
+  const {userInfo} = userLogin
   const [name, setName] = useState('')
   const [code, setCode] = useState('')
   const [isBasicCurrency, setIsBasicCurrency] = useState(false)
@@ -27,11 +28,16 @@ function Currencies() {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(addCurrency(user, name, code, isBasicCurrency))
-    dispatch(listCurrencies())
+    dispatch(addCurrency(userInfo.id, name, code, isBasicCurrency))
     setName('')
     setCode('')
     setIsBasicCurrency(false)
+    dispatch(listCurrencies())
+  }
+
+  const deleteHandler = (currency) => {
+    dispatch(deleteCurrency(currency.id))
+    dispatch(listCurrencies())
   }
   
   return (
@@ -52,10 +58,10 @@ function Currencies() {
                         {currencies.map((s) => (
                           <ListGroup.Item
                             key={s.id}
-                            action
+                            // action
                             onClick={() => onCurrencyClick(s)}
-                            className='mb-1'>
-                              {s.name}
+                            className='mb-1 currencies'>
+                              {s.name}<Badge pill as='button' bg="secondary" onClick={() => deleteHandler(s)}>Delete</Badge>
                           </ListGroup.Item>
                         ))}
                       </ListGroup>

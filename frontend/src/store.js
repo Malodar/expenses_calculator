@@ -7,16 +7,20 @@ import {
 import { 
   emailReducer,
 } from './reducers/emailReducers'
+import { userLoginReducer, userRegisterReducer } from './reducers/userReducers'
 
 const reducer = combineReducers({
   currencyList: currencyListReducer,
   email: emailReducer,
+  userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
 })
 
-
+const userInfoFromStorage = localStorage.getItem('userInfo') ? 
+    JSON.parse(localStorage.getItem('userInfo')) : null
 
 const initialState = {
-  // cart: {cartItems: cartItemsFromStorage}
+  userLogin: {userInfo:userInfoFromStorage},
 }
 
 const middleware = [thunk]

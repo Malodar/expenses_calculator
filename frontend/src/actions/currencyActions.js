@@ -6,10 +6,34 @@ import {
   CURRENCY_ADD_REQUEST,
   CURRENCY_ADD_SUCCESS,
   CURRENCY_ADD_FAIL,
+  CURRENCY_DELETE_REQUEST,
+  CURRENCY_DELETE_SUCCESS,
+  CURRENCY_DELETE_FAIL,
 } from '../constants/currencyConstants'
 
+export const deleteCurrency = (id) => async(dispatch) => {
+  try{
+    dispatch({
+      type: CURRENCY_DELETE_REQUEST,
+    })
+    const {data} = await axios.delete(
+      `/api/currencies/delete/${id}`,
+    )
+    dispatch({
+      type: CURRENCY_DELETE_SUCCESS,
+      payload: data,
+    })
+  }catch(error){
+    dispatch({
+      type: CURRENCY_DELETE_FAIL,
+      payload: error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message,
+    })
+  }
+}
+
 export const addCurrency = (user, name, code, is_basic_currency) => async (dispatch) => {
-  console.log({'user': user, 'name': name, 'code': code, 'is_basic_currency': is_basic_currency})
   try{
     dispatch({
       type: CURRENCY_ADD_REQUEST,

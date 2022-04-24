@@ -9,7 +9,7 @@ function SiderMenu() {
       <LinkContainer to='/'>
         <Nav.Link>Enter operations</Nav.Link>
       </LinkContainer>
-      <Accordion defaultActiveKey="0" as='div' flush className='menu'>
+      <Accordion as='div' flush className='menu' alwaysOpen>
         <Accordion.Item eventKey="1" >
           <Accordion.Header as='div'>Dictionaries</Accordion.Header>
           <Accordion.Body>

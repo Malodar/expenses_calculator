@@ -5,6 +5,9 @@ import {
     CURRENCY_ADD_REQUEST,
     CURRENCY_ADD_SUCCESS,
     CURRENCY_ADD_FAIL,
+    CURRENCY_DELETE_REQUEST,
+    CURRENCY_DELETE_SUCCESS,
+    CURRENCY_DELETE_FAIL,
 } from '../constants/currencyConstants'
 
 export const currencyListReducer = (state = {currencies:[]}, action) => {
@@ -27,6 +30,19 @@ export const currencyAddReducer = (state = {}, action) => {
         case CURRENCY_ADD_SUCCESS:
             return {loading:false, currencies: action.payload}
         case CURRENCY_ADD_FAIL:
+            return {loading:false, error: action.payload}
+        default:
+            return state
+    }
+}
+
+export const currencyDeleteReducer = (state = {}, action) => {
+    switch(action.type){
+        case CURRENCY_DELETE_REQUEST:
+            return {loading:true}
+        case CURRENCY_DELETE_SUCCESS:
+            return {loading:false, currencies: action.payload}
+        case CURRENCY_DELETE_FAIL:
             return {loading:false, error: action.payload}
         default:
             return state
