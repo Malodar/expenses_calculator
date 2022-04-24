@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Currency(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     code = models.CharField(max_length=3)
     is_basic_currency = models.BooleanField(default=False)
 

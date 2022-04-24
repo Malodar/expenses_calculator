@@ -11,16 +11,19 @@ function SiderMenu() {
       </LinkContainer>
       <Accordion defaultActiveKey="0" as='div' flush className='menu'>
         <Accordion.Item eventKey="1" >
-          <Accordion.Header as='div'>Vocabulary</Accordion.Header>
+          <Accordion.Header as='div'>Dictionaries</Accordion.Header>
           <Accordion.Body>
+            <LinkContainer to='/currencies'>
+              <NavDropdown.Item eventKey="1">Currencies</NavDropdown.Item>
+            </LinkContainer>
             <LinkContainer to='/expenses-categories'>
-              <NavDropdown.Item eventKey="1">Expense categories</NavDropdown.Item>
+              <NavDropdown.Item eventKey="2">Expense categories</NavDropdown.Item>
             </LinkContainer>
             <LinkContainer to='/income-categories'>
-              <NavDropdown.Item eventKey="2">Income categories</NavDropdown.Item>
+              <NavDropdown.Item eventKey="3">Income categories</NavDropdown.Item>
             </LinkContainer>
             <LinkContainer to='/places-money-saving'>
-              <NavDropdown.Item eventKey="3">Places of money saving</NavDropdown.Item>
+              <NavDropdown.Item eventKey="4">Places of money saving</NavDropdown.Item>
             </LinkContainer>
           </Accordion.Body>
         </Accordion.Item>

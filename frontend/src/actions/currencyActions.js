@@ -3,8 +3,40 @@ import {
   CURRENCY_LIST_REQUEST,
   CURRENCY_LIST_SUCCESS,
   CURRENCY_LIST_FAIL,
+  CURRENCY_ADD_REQUEST,
+  CURRENCY_ADD_SUCCESS,
+  CURRENCY_ADD_FAIL,
 } from '../constants/currencyConstants'
 
+export const addCurrency = (user, name, code, is_basic_currency) => async (dispatch) => {
+  console.log({'user': user, 'name': name, 'code': code, 'is_basic_currency': is_basic_currency})
+  try{
+    dispatch({
+      type: CURRENCY_ADD_REQUEST,
+    })
+    const config = {
+      headers: {
+        'Content-type': 'application/json',
+      }
+    }
+    const {data} = await axios.post(
+      '/api/currencies/add/',
+      {'user': user, 'name': name, 'code': code, 'is_basic_currency': is_basic_currency},
+      config,
+    )
+    dispatch({
+      type: CURRENCY_ADD_SUCCESS,
+      payload: data,
+    })
+  }catch(error){
+    dispatch({
+      type: CURRENCY_ADD_FAIL,
+      payload: error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message,
+    })
+  }
+}
 
 export const listCurrencies = () => async (dispatch) => {
   try{
